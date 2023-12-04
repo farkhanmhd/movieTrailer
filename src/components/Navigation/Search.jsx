@@ -6,7 +6,7 @@ export default function Search() {
         name="search-input"
         placeholder="Search movies..."
         id="search-input"
-        className="w-full outline-none px-3 py-2 bg-slate-200 dark:bg-zinc-900 border-b-2 border-slate-200 dark:border-gray-900 rounded-lg focus:border-b-orange-400  duration-200"
+        className="w-full outline-none px-3 py-2 bg-[rgba(255,255,255,.5)] dark:bg-[rgba(0,0,0,.5)]  rounded-lg backdrop-blur-sm"
       />
     </div>
   );

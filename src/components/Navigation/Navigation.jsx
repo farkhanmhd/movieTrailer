@@ -23,7 +23,7 @@ const Navigation = ({ isDark, themeToggle }) => {
     <nav
       className={`${
         isOpen ? "h-[130px]" : "h-[60px]"
-      } bg-white overflow-hidden flex flex-col justify-start items-start gap-5 md:justify-between md:items-center fixed  md:px-14 lg:px-20 bg-transparent backdrop-blur top-0 left-0 w-full md:h-[60px] pt-2 pb-0 md:py-2 md:flex-row duration-[250ms] tracking-wide dark:bg-black dark:text-white`}
+      } bg-[rgba(255,255,255,.7)] overflow-hidden flex flex-col justify-start items-start gap-5 md:justify-between md:items-center fixed  md:px-14 lg:px-20 top-0 left-0 w-full md:h-[60px] pt-2 pb-0 md:py-2 md:flex-row duration-[250ms] tracking-wide dark:bg-[rgba(0,0,0,.75)] dark:text-white z-50  backdrop-blur-lg shadow-sm`}
     >
       <Logo />
       <Search />
