@@ -28,7 +28,7 @@ export default function NavLinkContainer({ isDark, themeToggle }) {
             <circle cx="135" cy="57" r="9" fill={isDark ? "white" : "black"} />
           </svg>
         </NavLinks>
-        <NavLinks location="#">
+        <NavLinks location="https://www.github.com/farkhanmhd">
           <svg
             width="28"
             height="28"
