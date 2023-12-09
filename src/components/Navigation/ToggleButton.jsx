@@ -5,17 +5,17 @@ export default function ToggleButton({ click, openState }) {
       onClick={click}
     >
       <div
-        className={`transition lines w-full rounded-sm h-1 bg-black dark:bg-white origin-left ${
+        className={`transition lines w-full rounded-sm h-1 bg-white origin-left ${
           openState ? "rotate-45" : ""
         }`}
       ></div>
       <div
-        className={`transition lines w-full rounded-sm h-1 bg-black dark:bg-white origin-left ${
+        className={`transition lines w-full rounded-sm h-1 bg-white origin-left ${
           openState ? "scale-x-0" : ""
         }`}
       ></div>
       <div
-        className={`transition lines w-full rounded-sm h-1 bg-black dark:bg-white origin-left ${
+        className={`transition lines w-full rounded-sm h-1 bg-white origin-left ${
           openState ? "-rotate-45" : ""
         }`}
       ></div>

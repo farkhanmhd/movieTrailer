@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import MovieList from "./components/Main/MovieList";
 import Footer from "./components/Footer/Footer";
+import Hero from "./components/Hero/Hero";
 const App = () => {
   const [isDark, setIsDark] = useState(false);
 
@@ -32,14 +33,10 @@ const App = () => {
 
   return (
     <>
-      <div className="app bg-slate-100 dark:bg-zinc-950 pt-[80px] pl-5 sm:pl-10 min-h-screen ">
+      <div className="app bg-slate-100 dark:bg-zinc-950 min-h-screen ">
         <Navigation isDark={isDark} themeToggle={handleThemeToggle} />
-        <main className="flex flex-col gap-y-5">
-          <MovieList
-            type={"movie"}
-            category={"now_playing"}
-            categoryTitle={"Now Playing"}
-          />
+        <Hero />
+        <main className="flex flex-col gap-y-5 mt-20">
           <MovieList
             category={"trending"}
             categoryTitle={"Weekly Trend"}

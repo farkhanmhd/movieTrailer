@@ -42,7 +42,7 @@ export default function SearchResult({ result }) {
 
   return (
     <>
-      <div className="search-result block fixed z-50 top-[150px] md:top-[70px] left-1/2 -translate-x-1/2 search-result  backdrop-blur-md bg-[rgba(235,235,235,.9)] dark:bg-[rgba(0,0,0,0.7)] w-[95%] px-5 md:w-3/6 lg:w-2/6 rounded-lg p-4 ">
+      <div className="search-result hidden fixed z-50 top-[150px] md:top-[70px] left-1/2 -translate-x-1/2 search-result  backdrop-blur-md bg-[rgba(0,0,0,0.7)] w-[95%] px-5 md:w-3/6 lg:w-2/6 rounded-lg p-4 ">
         <ul className="search-list flex flex-col gap-y-1 overflow-auto rounded-lg origin-top h-min max-h-[400px] w-full duration-[250ms] ">
           {result.map((movie) => {
             if (
