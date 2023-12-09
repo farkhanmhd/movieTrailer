@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import formattedDate from "../../assets/formattedDate";
 
 export default function Modal({ id, type, closeModal }) {
   const [movie, setMovie] = useState({});
@@ -19,7 +20,7 @@ export default function Modal({ id, type, closeModal }) {
   }, [id, type]);
   return (
     <div
-      className="modal-box fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,.5)] z-50 justify-center items-center duration-[350ms] flex opacity-0"
+      className="modal-box fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,.5)] z-[999] justify-center items-center duration-[350ms] flex opacity-0 backdrop-blur-sm"
       onClick={closeModal}
       id={`modal-${id}`}
     >
@@ -42,14 +43,17 @@ export default function Modal({ id, type, closeModal }) {
           <h2 className="text-lg sm:text-6xl font-bold stroke-blue-500">
             {movie.title || movie.name}
           </h2>
-          <p>Release Date : {movie.release_date || movie.first_air_date}</p>
+          <p>
+            Release Date :{" "}
+            {formattedDate(movie.release_date || movie.first_air_date)}
+          </p>
           <p>
             Score :{" "}
             {Number(movie.vote_average) % 1 !== 0
-              ? Number(movie.vote_average).toFixed(1)
+              ? Number(movie.vote_average).toFixed(2)
               : Number(movie.vote_average)}
           </p>
-          <p className="line-clamp-3">{movie.overview}</p>
+          <p className="line-clamp-2">{movie.overview}</p>
         </div>
       </div>
     </div>

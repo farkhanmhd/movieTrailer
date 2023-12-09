@@ -34,7 +34,7 @@ const App = () => {
     <>
       <div className="app bg-slate-100 dark:bg-zinc-950 pt-[80px] pl-5 sm:pl-10 min-h-screen ">
         <Navigation isDark={isDark} themeToggle={handleThemeToggle} />
-        <main>
+        <main className="flex flex-col gap-y-5">
           <MovieList
             type={"movie"}
             category={"now_playing"}

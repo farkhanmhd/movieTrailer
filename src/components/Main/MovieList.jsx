@@ -61,11 +61,7 @@ export default function MovieList({
 
   return (
     <>
-      <div
-        className={`w-full h-[470px] sm:h-[600px] mb-5 last-of-type:mb-0 ${
-          isModalOpen ? "first-of-type:mb-5 mb-0" : ""
-        }`}
-      >
+      <div className={`w-full h-[470px] sm:h-[600px] `}>
         <h2 className="text-black dark:text-white font-bold text-3xl mb-5">
           {categoryTitle}
         </h2>
