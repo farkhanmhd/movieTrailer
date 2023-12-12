@@ -61,7 +61,9 @@ export default function MovieList({
 
   return (
     <>
-      <div className={`w-full h-[470px] sm:h-[600px] pl-5 md:pl-10`}>
+      <div
+        className={`w-full h-[350px] sm:h-[450px] md:h-[550px] pl-5 md:pl-10`}
+      >
         <h2 className="text-black dark:text-white font-bold text-3xl mb-5">
           {categoryTitle}
         </h2>

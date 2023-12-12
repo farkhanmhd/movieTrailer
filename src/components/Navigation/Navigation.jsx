@@ -81,7 +81,7 @@ const Navigation = ({ isDark, themeToggle }) => {
       }
     };
     searchMedia(inputValue);
-  }, [inputValue, searchResult.length]);
+  }, [inputValue.length, searchResult.length, inputValue]);
 
   useEffect(() => {}, []);
 

@@ -1,3 +1,5 @@
+import "../../assets/responsive.css";
+
 export default function Card({
   title,
   imageSource,
@@ -10,7 +12,7 @@ export default function Card({
   return (
     <>
       <div
-        className="card w-[250px] h-[400px] sm:w-[300px] sm:h-[500px] rounded-xl overflow-hidden relative shadow-md group cursor-pointer shrink-0"
+        className="card aspect-[10/16] max-w-[150px] sm:max-w-[215px] md:max-w-[220px] lg:max-w-[285px] rounded-xl overflow-hidden relative shadow-md group cursor-pointer shrink-0"
         id={id}
         onClick={onClick}
       >
@@ -26,10 +28,10 @@ export default function Card({
               "linear-gradient(to bottom, transparent , rgba(0,0,0,.85) 65%)",
           }}
         >
-          <h4 className="text-2xl font-bold mb-2 line-clamp-1 text-ellipsis text-white">
+          <h4 className="text-base sm:text-2xl font-bold mb-1 line-clamp-1 text-ellipsis text-white">
             {title}
           </h4>
-          <p className="text-sm text-white mb-2">
+          <p className="text-sm text-white mb-1">
             {releaseDate} | {voteAverage}
           </p>
           <p className="line-clamp-2 text-ellipsis text-sm text-white">

@@ -1,8 +1,8 @@
 .fade-in {
-  animation: fadeIn 0.5s ease-in infinite forwards alternate;
+  animation: fadeIn 0.5s ease-in 1 forwards;
 }
 .reveal {
-  animation: reveal 0.5s ease-in infinite alternate;
+  animation: reveal 0.5s ease-in 1 forwards;
 }
 
 @keyframes fadeIn {

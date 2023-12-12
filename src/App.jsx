@@ -36,7 +36,7 @@ const App = () => {
       <div className="app bg-slate-100 dark:bg-zinc-950 min-h-screen ">
         <Navigation isDark={isDark} themeToggle={handleThemeToggle} />
         <Hero />
-        <main className="flex flex-col gap-y-5 mt-20">
+        <main className="flex flex-col gap-y-5 mt-10">
           <MovieList
             category={"trending"}
             categoryTitle={"Weekly Trend"}

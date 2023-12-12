@@ -53,7 +53,7 @@ export default function SearchResult({ result }) {
               return (
                 <li
                   key={movie.id}
-                  className="flex flex-row gap-x-5 items-center hover:shadow-[0_0_10px_0_rgba(0,0,0,0.3)] dark:hover:shadow-[0_0_10px_0_rgba(255,255,255,0.3)] duration-[250ms] cursor-pointer rounded-lg p-5 m-2"
+                  className="flex flex-row gap-x-5 items-center hover:shadow-[0_0_10px_0_rgba(255,255,255,0.3)] duration-[250ms] cursor-pointer rounded-lg p-5 m-2"
                   onClick={() => {
                     openModal(movie.id);
                     setMediaType(movie.media_type);
