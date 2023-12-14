@@ -15,6 +15,7 @@ export default function Hero() {
   const [isYoutubeOpen, setYoutubeOpen] = useState(false);
   const [trailerVideoId, setTrailerVideoId] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const apiKey = "13fac615ed3a65fbe773c50d2cc4b10e";
 
   const updateWindowWidth = () => {
     setWindowWidth(window.innerWidth);
@@ -31,19 +32,23 @@ export default function Hero() {
   const aspectRatio = 16 / 9;
   const calculatedHeight = windowWidth * (1 / aspectRatio);
 
-  const fetchTrailerUrl = async (movieTitle) => {
-    // const youtubeApiKey = "AIzaSyASpHTIiA_OL6mwMbWVM7zKhCSyAzZkR5U";
-    // const youtubeApiKey = "AIzaSyCyQDLjV-gmLy0kF33YSgVTBvlNluO96J4";
-    const youtubeApiKey = "AIzaSyAnrNhQOnUnq6r_yui9_nnNP4FtLSI7_vM";
+  const fetchTrailerUrl = async (movie_id) => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movieTitle} trailer&type=video&key=${youtubeApiKey}`
+        `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${apiKey}`
       );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      const videoId = data.items[0].id.videoId;
+
+      const trailerItem = data.results.find((item) => item.type === "Trailer");
+
+      if (!trailerItem) {
+        throw new Error("No trailer found for the media.");
+      }
+
+      const videoId = trailerItem.key;
       return videoId;
     } catch (error) {
       console.error("Error fetching trailer URL:", error);
@@ -60,7 +65,6 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    const apiKey = "13fac615ed3a65fbe773c50d2cc4b10e";
     const endpoint = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
 
     const fetchData = async () => {
@@ -73,9 +77,7 @@ export default function Hero() {
         setMovieScore(data.results[0].vote_average);
         setMovieOverview(data.results[0].overview);
         setMovieBackground(data.results[0].backdrop_path);
-        const videoId = await fetchTrailerUrl(
-          data.results[0].title || data.results[0].name
-        );
+        const videoId = await fetchTrailerUrl(data.results[0].id);
         setTrailerVideoId(videoId);
       } catch (error) {
         console.log("Error fetching data: ", error);
@@ -96,7 +98,7 @@ export default function Hero() {
     const heroDetail = document.querySelector(".hero-detail");
     heroContent.classList.add("reveal");
     heroDetail.classList.add("fade-in");
-    const videoId = await fetchTrailerUrl(movie.title);
+    const videoId = await fetchTrailerUrl(movie.id);
     setTrailerVideoId(videoId);
     setTimeout(() => {
       heroContent.classList.remove("reveal");
