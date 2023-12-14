@@ -24,8 +24,8 @@ export default function Modal({ id, type, closeModal }) {
   const aspectRatio = 16 / 9;
   const calculatedHeight = windowWidth * (1 / aspectRatio);
 
+  const apiKey = "13fac615ed3a65fbe773c50d2cc4b10e";
   useEffect(() => {
-    const apiKey = "13fac615ed3a65fbe773c50d2cc4b10e";
     const endpoint = `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`;
 
     async function fetchData() {
@@ -33,7 +33,8 @@ export default function Modal({ id, type, closeModal }) {
         const response = await fetch(endpoint);
         const data = await response.json();
         setMovie(data);
-        const videoId = await fetchTrailerUrl(data.title || data.name);
+        const videoType = type === "movie" ? "movie" : "tv";
+        const videoId = await fetchTrailerUrl(data.id, videoType);
         setTrailerVideoId(videoId);
       } catch (error) {
         console.log("Error fetching data: ", error);
@@ -42,20 +43,23 @@ export default function Modal({ id, type, closeModal }) {
     fetchData();
   }, [id, type]);
 
-  const fetchTrailerUrl = async (movieTitle) => {
-    // const youtubeApiKey = "AIzaSyASpHTIiA_OL6mwMbWVM7zKhCSyAzZkR5U";
-    // const youtubeApiKey = "AIzaSyCyQDLjV-gmLy0kF33YSgVTBvlNluO96J4";
-    const youtubeApiKey = "AIzaSyAnrNhQOnUnq6r_yui9_nnNP4FtLSI7_vM";
-
+  const fetchTrailerUrl = async (movie_id, type) => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movieTitle} trailer&type=video&key=${youtubeApiKey}`
+        `https://api.themoviedb.org/3/${type}/${movie_id}/videos?api_key=${apiKey}`
       );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      const videoId = data.items[0].id.videoId;
+
+      const trailerItem = data.results.find((item) => item.type === "Trailer");
+
+      if (!trailerItem) {
+        throw new Error("No trailer found for the media.");
+      }
+
+      const videoId = trailerItem.key;
       return videoId;
     } catch (error) {
       console.error("Error fetching trailer URL:", error);

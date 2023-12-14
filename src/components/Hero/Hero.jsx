@@ -116,7 +116,7 @@ export default function Hero() {
     >
       <div className="hero-content flex flex-col sm:flex-row w-full h-full bg-gradient-to-b from-transparent to-black items-end gap-5 md:gap-8 pb-10">
         <div className="hero-detail flex flex-col gap-2 md:gap-8 w-full md:w-1/2 h-1/2 sm:h-1/2 md:h-auto justify-start sm:justify-evenly md:justify-between pt-20 md:py-24 px-10 md:px-16">
-          <h2 className="text-base sm:text-4xl md:text-7xl font-bold drop-shadow-md">
+          <h2 className="text-4xl sm:text-4xl md:text-7xl font-bold drop-shadow-md">
             {movies.length > 0 ? movieTitle : "Title"}
           </h2>
           <p className="text-base md:text-3xl  drop-shadow-md">

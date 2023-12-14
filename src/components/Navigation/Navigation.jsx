@@ -11,6 +11,10 @@ const Navigation = ({ isDark, themeToggle }) => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
+    const nav = document.getElementById("nav");
+    nav.classList.replace("overflow-visible", "overflow-hidden");
+    nav.classList.replace("sm:overflow-visible", "sm:overflow-hidden");
+    nav.classList.replace("md:overflow-visible", "md:overflow-hidden");
     window.addEventListener("resize", () => {
       const windowWidth = window.innerWidth;
       if (windowWidth < 768) {
@@ -47,22 +51,22 @@ const Navigation = ({ isDark, themeToggle }) => {
   };
 
   useEffect(() => {
-    const searchResult = document.querySelector(".search-result");
-    if (inputValue.length > 0 && searchResult.classList.contains("block")) {
+    const search_Result = document.querySelector(".search-result");
+    if (inputValue.length > 0 && search_Result.classList.contains("block")) {
       document.addEventListener("click", (event) => {
-        if (event.target !== searchResult) {
-          searchResult.classList.replace("block", "hidden");
+        if (event.target !== search_Result) {
+          search_Result.classList.replace("block", "hidden");
         }
       });
-    } else {
-      searchResult.classList.replace("hidden", "block");
     }
-  }, [inputValue.length]);
+    if (searchResult.length > 0) {
+      search_Result.classList.replace("hidden", "block");
+    }
+  }, [inputValue.length, searchResult]);
 
   useEffect(() => {
     const searchMedia = async (value) => {
       const apiKey = "13fac615ed3a65fbe773c50d2cc4b10e";
-
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${encodeURIComponent(
@@ -82,8 +86,6 @@ const Navigation = ({ isDark, themeToggle }) => {
     };
     searchMedia(inputValue);
   }, [inputValue.length, searchResult.length, inputValue]);
-
-  useEffect(() => {}, []);
 
   const openSearchResult = (searchValue) => {
     setInputValue(searchValue.target.value);
